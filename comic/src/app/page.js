@@ -1,7 +1,20 @@
+'use client';
+
+import React from 'react';
 import Comic from './components/Comic';
-import comicsData from './data/comics';
+import useMarvelAPI from './hooks/useMarvelAPI';
 
 const Home = () => {
+  const { data, loading, error } = useMarvelAPI();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div
       className="grid"
@@ -11,7 +24,7 @@ const Home = () => {
         gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
       }}
     >
-      {comicsData.map((comic) => (
+      {data?.data?.results.map((comic) => (
         <Comic key={comic.id} comic={comic} />
       ))}
     </div>

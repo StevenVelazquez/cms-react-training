@@ -1,21 +1,21 @@
 import Image from 'next/image';
 import styles from './Comic.module.css';
+import React from 'react';
 
 const Comic = ({ comic }) => {
-  const { title, thumbnail } = comic;
+  // Check if the comic thumbnail data exists
+  const thumbnailUrl = comic.thumbnail?.path ? `${comic.thumbnail.path}.${comic.thumbnail.extension}` : null;
 
   return (
     <div className={styles.comic}>
-      <Image
-        src={thumbnail}
-        alt={title}
-        width={250}
-        height={375}
-        layout="responsive"
-      />
+      {thumbnailUrl ? (
+        <img src={thumbnailUrl} alt={comic.title} />
+      ) : (
+        <div>No image available</div> // You can display a placeholder or fallback UI here
+      )}
       <div className={styles.details}>
-        <p>{title}</p>
-      </div>
+        <p>{comic.title}</p>
+      </div>      
     </div>
   );
 };
