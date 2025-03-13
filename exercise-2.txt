@@ -1,0 +1,9 @@
+Exercise: Working With An API
+
+Create a new branch in your repo named “exercise-2”. This branch should be based on “exercise-1”.
+
+Create a custom hook for the Marvel API.
+
+Your hook must support handling the loading, success, and error states of the API.
+
+Update your grid of comics to be powered by your new hook instead of the Static Data.
