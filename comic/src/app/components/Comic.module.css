@@ -1,25 +1,101 @@
+
+
 .comic {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+  padding: 10px;
+  text-align: center;
+}
+
+.details p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.comic img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+/* Sidebar */
+.favorites-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favorites-sidebar button {
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .favorites-sidebar {
+    width: 250px;
   }
-  
-  .details {
-    padding: 10px;
+}
+
+@media (max-width: 480px) {
+  .favorites-sidebar {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    box-shadow: none;
+  }
+}
+/* styles.css or your module CSS */
+@media (max-width: 768px) {
+  header,
+  footer {
     text-align: center;
   }
-  
-  .details p {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
+
+  .grid {
+    grid-template-columns: 1fr;
   }
-  
-  .comic img {
+
+  aside {
     width: 100%;
-    height: auto;
-    object-fit: cover;
   }
-  
+}
+/* Global typography */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
