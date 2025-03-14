@@ -1,0 +1,7 @@
+flexed biceps Exercise: Your First Test
+
+Create a new branch named “exercise-4”. This branch should be based on “exercise-3”.
+
+Add Jest and the React Testing Library to your project.
+
+Create a test that validates that the Comic component accurately renders the title, issue number, published date, and creator names.

@@ -1,0 +1,7 @@
+Create a new branch in your repo named “exercise-3”. This branch should be based on “exercise-2”.
+
+Put NextJS in TypeScript mode.
+
+Convert all your components and hooks from .js files to .tsx files.
+
+Define types or interfaces for all props for each component/hook as well as address any TypeScript errors that may have appeared.

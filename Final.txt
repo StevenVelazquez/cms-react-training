@@ -1,0 +1,63 @@
+Create a new branch in your repo named “final-project”. This branch should be based on “exercise-4”.
+
+Taking everything you’ve learned and built up until now, build out everything else in the Design Comps. (there are multiple pages)
+
+When you’ve finished your final project, send your repo to your lead for review. You may need to update the permissions on your repo to allow your lead to view your work.
+
+Final Project Criteria
+
+All images must be loaded via the Next/Image component.
+
+You will need to update your Marvel API hook to support filters and pagination.
+
+The pagination must be full functional
+
+It should reset when you choose an item from the filters
+
+Character filter options:
+
+Iron Man: 1009368
+
+Captain America: 1009220
+
+Thor: 1009664
+
+Deadpool: 1009268
+
+Scarlet Witch: 1009562
+
+Black Widow: 1009189
+
+Wasp: 1009707
+
+Gamora: 1010763
+
+Creator filter options:
+
+Kate Leth: 12787
+
+Brian Michael Bendis: 24
+
+Stan Lee: 30
+
+Steve Ditko: 32
+
+Jack Kirby: 196
+
+You must be able to add and remove comics from a favorites list.
+
+An accurate count of favorites must show in the header.
+
+The favorites sidebar should always be accurate and the close button should work
+
+Once clicked, favorite buttons should become unfavorite buttons.
+
+Favorites should be limited to no more than 10 comics. Once that limit is reached all favorite buttons should become disabled until a comic is removed from the favorites list.
+
+Favorites should be stored in LocalStorage so selections persist after a page reload.
+
+The app must be responsive. (There are mobile comps in the XD file)
+
+The app should follow best practices around semantics and accessibility.
+
+The app must match the Design Comp visually.
