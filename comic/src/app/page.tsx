@@ -4,16 +4,11 @@ import React from 'react';
 import Comic from './components/Comic';
 import useMarvelAPI from './hooks/useMarvelAPI';
 
-const Home = () => {
+const Home: React.FC = () => {
   const { data, loading, error } = useMarvelAPI();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div
