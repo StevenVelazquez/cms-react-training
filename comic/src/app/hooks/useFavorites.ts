@@ -1,36 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const useFavorites = () => {
-  // State to hold favorite comic IDs
-  const [favorites, setFavorites] = useState<number[]>(() => {
-    // Load favorites from localStorage if available
-    const savedFavorites = localStorage.getItem('favorites');
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
+const FAVORITES_KEY = 'favorites';
+
+interface Comic {
+  id: number;
+  title: string;
+  issueNumber: number;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  dates?: { type: string; date: string }[];
+  creators?: { items: { role: string; name: string }[] };
+}
+
+export default function useFavorites() {
+  const [favorites, setFavorites] = useState<Comic[]>(() => {
+    // Load favorites from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      try {
+        const storedFavorites = localStorage.getItem(FAVORITES_KEY);
+        return storedFavorites ? JSON.parse(storedFavorites) : [];
+      } catch (error) {
+        console.error('Error loading favorites from localStorage:', error);
+        return [];
+      }
+    }
+    return [];
   });
 
-  // Add a comic to favorites
-  const addFavorite = (comicId: number) => {
-    setFavorites((prevFavorites) => {
-      const newFavorites = [...prevFavorites, comicId];
-      localStorage.setItem('favorites', JSON.stringify(newFavorites)); // Save to localStorage
-      return newFavorites;
-    });
+  // Save to localStorage when favorites change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    }
+  }, [favorites]);
+
+  const addFavorite = (comic: Comic) => {
+    if (!comic || !comic.id) return; // Prevent adding invalid comics
+    if (favorites.length >= 10) return; // Limit to 10 comics
+    if (favorites.some((fav) => fav.id === comic.id)) return; // Prevent duplicates
+
+    setFavorites((prevFavorites) => [...prevFavorites, comic]);
   };
 
-  // Remove a comic from favorites
   const removeFavorite = (comicId: number) => {
-    setFavorites((prevFavorites) => {
-      const newFavorites = prevFavorites.filter((id) => id !== comicId);
-      localStorage.setItem('favorites', JSON.stringify(newFavorites)); // Save to localStorage
-      return newFavorites;
-    });
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((comic) => comic.id !== comicId)
+    );
   };
 
-  return {
-    favorites,
-    addFavorite,
-    removeFavorite,
-  };
-};
-
-export default useFavorites; // Default export
+  return { favorites, addFavorite, removeFavorite };
+}
