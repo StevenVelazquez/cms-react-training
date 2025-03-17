@@ -6,6 +6,7 @@
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #000;
 }
 
 .details {
@@ -16,7 +17,7 @@
 .details p {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #333;
+  color: #000;
 }
 
 .comic img {
